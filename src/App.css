@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
 * {
-  color: whitesmoke;
+  color: black;
+}
+
+nav {
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav img {
+  width: 150px;
+}
+.whiteTheme {
+  filter: invert(100%) grayscale(100%) brightness(200%);
+}
+.theme-icon {
+  cursor: pointer;
+  padding: 0.3em;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+}
+.icon {
+  font-size: 23px;
 }
