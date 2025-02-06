@@ -8,7 +8,7 @@ export function Navbar() {
   return (
     <nav id="nav" className="bg-white">
       <div>
-        <img src="./public/logo.png" alt="logo" />
+        <img src="/logo.png" alt="logo" />
       </div>
       <div className="theme-icon bg-gray-100">
         {light ? (
