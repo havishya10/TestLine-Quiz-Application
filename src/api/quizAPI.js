@@ -22,7 +22,7 @@ export async function fetchQuizData() {
     },
   };
   // Assume quiz.json is in the public folder, so use a relative root URL:
-  const url = "./public/quiz.json";
+  const url = "/quiz.json";
 
   const response = await fetch(url, options);
   if (!response) {

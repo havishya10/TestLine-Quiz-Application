@@ -6,10 +6,11 @@ import { theme } from "../utils/theme";
 export function Navbar() {
   let [light, isLight] = React.useState(false);
   return (
-    <nav id="nav" className="bg-white">
+    <nav id="nav" className="bg-white fixed top-0 left-0 right-0 z-50">
       <div>
-        <img src="./public/logo.png" alt="logo" />
+        <img src="/logo.png" alt="logo" />
       </div>
+
       <div className="theme-icon bg-gray-100">
         {light ? (
           <HiSun

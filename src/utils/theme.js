@@ -5,11 +5,14 @@ export function theme(themeState) {
     document.getElementById("nav").classList.add("bg-white");
     document.getElementById("nav").classList.remove("bg-zinc-950");
     document.querySelector("#nav > * ").classList.toggle("whiteTheme");
+    document.querySelector("main").style.color = "black";
   } else {
     document.body.classList.toggle("bg-slate-950");
     document.body.classList.toggle("bg-sky-50");
     document.getElementById("nav").classList.add("bg-zinc-950");
     document.getElementById("nav").classList.remove("bg-white");
     document.querySelector("#nav > * ").classList.toggle("whiteTheme");
+
+    document.querySelector("main").style.color = "white";
   }
 }

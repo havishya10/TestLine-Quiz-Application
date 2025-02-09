@@ -1,12 +1,47 @@
 @import "tailwindcss";
 
 * {
-  color: black;
+  box-sizing: border-box !important;
+  user-select: none;
+  text-wrap: pretty;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 1.5rem;
+}
+.q-no {
+  color: #8c95ad;
+  font-size: 1.2rem;
+}
+main {
+  padding: 1em;
+  min-height: 85vh;
+  max-height: 90vh;
+  max-width: 900px;
+  width: 100%;
+  align-self: center;
+  top: 80px;
+  position: relative;
+  margin: 0 auto;
 }
 
 nav {
   width: 100%;
-  padding: 2em;
+  padding: 1em 1.3em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,3 +62,197 @@ nav img {
 .icon {
   font-size: 23px;
 }
+/* From Uiverse.io by mobinkakei */
+.btn-txt {
+  color: white;
+}
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+  padding: 11px 33px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  /* background-image: linear-gradient(to right, #bae6fd, #1c8d8d); */
+  /* #2e2860 */
+  background-image: linear-gradient(to right, #7b7aa8, #6fbaba);
+  transition: 1s;
+  box-shadow: 6px 6px 0 rgba(117, 154, 177, 0.75);
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  transition: 0.5s;
+  /* background-image: linear-gradient(to right, #2e2860, #1c8d8d); */
+  background-image: linear-gradient(
+    to right,
+    hsl(245, 40%, 30%),
+    hsl(245, 40%, 35%)
+  );
+  box-shadow: 10px 10px 0 #1c8d8b;
+}
+
+.cta .second {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover .second {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg);
+}
+
+.second {
+  width: 20px;
+  margin-left: 30px;
+  position: relative;
+  top: 12%;
+}
+
+.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover .two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: #1c8d8b;
+  }
+
+  100% {
+    fill: white;
+  }
+}
+.quiz-btn {
+  display: flex;
+  place-content: center;
+  user-select: none;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
+}
+.topic-container {
+  text-align: center;
+  color: Dark Purple;
+  margin-bottom: 1em;
+}
+
+li {
+  margin: 1em 0;
+
+  padding: 1em;
+  border-radius: 7px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.quiz-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 1.5em;
+  color: #8c95ad;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.control-buttons div {
+  border: none;
+  gap: 0.5em;
+  background-color: #6fbaba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+  color: whitesmoke;
+}
+
+.prev,
+.nxt {
+  border: none;
+  border-radius: 100%;
+  font-size: 2.5rem;
+  color: black;
+  padding: 0.3em 0;
+  color: whitesmoke;
+  background-color: #52b1b0;
+}
+.nxt-btn-container {
+  padding-left: 2em;
+}
+.prev-btn-container {
+  padding-right: 1.5em;
+}
+.submit-btn {
+  color: white;
+  background-color: #1f8584;
+  padding: 0.8em 2em;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* 
+
+@media (max-width: 500px) {
+  .submit-btn {
+    margin: 0 auto;
+    margin: 1em 0;
+  }
+  .control-buttons-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+  }
+}
+.submit-btn:disabled {
+  background-color: #ccc;
+  color: #666; 
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+*/
