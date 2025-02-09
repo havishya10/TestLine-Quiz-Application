@@ -20,13 +20,11 @@ export function Quiz({ data, questionsAnswered }) {
     timer.addEventListener("secondsUpdated", function () {
       const timeValues = timer.getTimeValues();
       timerEl.textContent = formatTime(timeValues);
-      // if (timerEl.textContent === "00:00") {
-      //   document.body.style.backgroundColor = "red";
-      // }
+      if (timerEl.textContent === "00:00") {
+        document.body.style.backgroundColor = "darkred";
+      }
     });
-    if (qIndex === data.questions.length - 1) {
-      timer.stop();
-    }
+
     return () => {
       timer.stop();
     };
@@ -68,12 +66,8 @@ export function Quiz({ data, questionsAnswered }) {
       op.classList.add("bg-emerald-400", "border-green-400", "font-bold");
       op.parentNode.is_saved = true;
       document.getElementById("score").textContent = score;
-      // console.log(score);
-      // console.log(op.parentNode.is_saved);
     } else {
       op.classList.add("bg-red-300", "border-red-400", "text-red-800");
-
-      // console.log(score);
     }
   }
 
@@ -85,12 +79,18 @@ export function Quiz({ data, questionsAnswered }) {
       </div>
       <div id={data.questions[qIndex].id} className="question-container">
         <div className="question">
-          <p className="q-no">Question {qIndex + 1}</p>
+          <div className="q-no">
+            <p>Question {qIndex + 1}</p>
+            <div>
+              <p>correct : 4</p>
+              <p>Incorrect: 0</p>
+            </div>
+          </div>
           <h1>{decode(data.questions[qIndex].description)}</h1>
         </div>
         <div className="option-container">
           <ul>
-            {data.questions[qIndex].options.map((opt) => {
+            {data.questions[qIndex].options.map((opt, i) => {
               return (
                 <li
                   key={opt.id}
@@ -108,7 +108,9 @@ export function Quiz({ data, questionsAnswered }) {
                     );
                   }}
                 >
-                  {decode(opt.description, { level: "html5" })}
+                  {`${String.fromCharCode(65 + i)}: ${decode(opt.description, {
+                    level: "html5",
+                  })}`}
                 </li>
               );
             })}
@@ -120,7 +122,9 @@ export function Quiz({ data, questionsAnswered }) {
         (<h1 id="total-score">Total Score : {score * 4}/40</h1>))
       ) : (
         <div className="control-buttons">
-          <p>Score : {score}</p>
+          <p>
+            {qIndex + 1}/{data.questions_count}
+          </p>
           <div className="nxt-btn-container">
             <button
               id="nxt-btn"

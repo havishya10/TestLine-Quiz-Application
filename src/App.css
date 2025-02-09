@@ -22,10 +22,23 @@ p {
 }
 h1 {
   font-size: 1.5rem;
+  margin: 1em 0;
+}
+ul {
+  margin-top: 2.5em;
 }
 .q-no {
   color: #8c95ad;
   font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  font-size: 1.1rem;
+}
+.q-no div {
+  display: flex;
+  gap: 1em;
 }
 main {
   padding: 1em;
@@ -62,7 +75,7 @@ nav img {
 .icon {
   font-size: 23px;
 }
-/* From Uiverse.io by mobinkakei */
+
 .btn-txt {
   color: white;
 }
@@ -232,27 +245,3 @@ li {
   cursor: pointer;
   margin-left: auto;
 }
-
-/* 
-
-@media (max-width: 500px) {
-  .submit-btn {
-    margin: 0 auto;
-    margin: 1em 0;
-  }
-  .control-buttons-container {
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    place-items: center;
-  }
-}
-.submit-btn:disabled {
-  background-color: #ccc;
-  color: #666; 
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-*/

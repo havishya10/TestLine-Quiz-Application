@@ -5,7 +5,6 @@ import { Navbar } from "./components/Navbar";
 import { StartQuizBtn } from "./components/StartQuizBtn";
 import { Quiz } from "./pages/Quiz";
 import { Loader } from "./components/Loader";
-import { SplashScreen } from "./components/SplashScreen";
 import { ConfettiComponent } from "./components/ConfettiComponent";
 
 export default function App() {
@@ -14,7 +13,7 @@ export default function App() {
   let [score, setScore] = React.useState(0);
   let [startQuiz, setStartQuiz] = React.useState(false);
   let [isQuestionsAnswered, setIsQuestionsAnswered] = React.useState(false);
-  const [showSplashScreen, setShowSplashScreen] = React.useState(false);
+
   const fetchData = async () => {
     const options = {
       method: "GET",
@@ -26,7 +25,7 @@ export default function App() {
     const response = await fetch(url, options);
 
     if (!response.ok) {
-      fetchData(); // Recall the function if API didn't load
+      fetchData(); // Recalling the function if API didn't load
       return;
     }
     const data = await response.json();
@@ -42,12 +41,15 @@ export default function App() {
       <Navbar />
       <main>
         <StartQuizBtn onQuizStart={(status) => setStartQuiz(status)} />
-        {startQuiz && (
-          <Quiz
-            data={quizData}
-            questionsAnswered={(status) => setIsQuestionsAnswered(status)}
-          />
-        )}
+        {startQuiz &&
+          (quizData ? (
+            <Quiz
+              data={quizData}
+              questionsAnswered={(status) => setIsQuestionsAnswered(status)}
+            />
+          ) : (
+            <Loader />
+          ))}
       </main>
     </>
   );
