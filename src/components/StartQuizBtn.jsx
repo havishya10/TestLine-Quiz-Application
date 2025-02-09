@@ -1,14 +1,14 @@
 import React from "react";
 
-export function StartQuizBtn({ onQuizStart, quizStatus }) {
+export function StartQuizBtn({ onQuizStart }) {
   return (
-    <div className="quiz-btn">
+    <div id="start-quiz-btn" className="quiz-btn">
       <button
         className="cta"
         id="#start-btn"
         onClick={() => {
-          onQuizStart();
-          console.log(quizStatus);
+          onQuizStart(true);
+          document.getElementById("start-quiz-btn").style.display = "none";
         }}
       >
         <span className="span btn-txt">Start Quiz</span>

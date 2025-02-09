@@ -3,25 +3,30 @@ import { decode } from "html-entities";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import { Timer } from "easytimer.js";
-// var { Timer } = require("lib/easytimer/dist/easytimer.min.js");
 
-export function Quiz({ data }) {
+export function Quiz({ data, questionsAnswered }) {
   let [qIndex, setQIndex] = React.useState(0);
-  let [isQuestionAnswered, setIsQuestionAnswered] = React.useState(true);
+
   let [isSubmit, setIsSubmit] = React.useState(false);
-  let score = [];
+  let [score, setScore] = React.useState(0);
 
   React.useEffect(() => {
     const timer = new Timer();
+    const timerEl = document.getElementById("countdownTimer");
     timer.start({
       countdown: true,
       startValues: { minutes: parseInt(data.duration) },
     });
     timer.addEventListener("secondsUpdated", function () {
       const timeValues = timer.getTimeValues();
-      document.getElementById("countdownTimer").textContent =
-        formatTime(timeValues);
+      timerEl.textContent = formatTime(timeValues);
+      // if (timerEl.textContent === "00:00") {
+      //   document.body.style.backgroundColor = "red";
+      // }
     });
+    if (qIndex === data.questions.length - 1) {
+      timer.stop();
+    }
     return () => {
       timer.stop();
     };
@@ -62,6 +67,7 @@ export function Quiz({ data }) {
     if (isCorrect) {
       op.classList.add("bg-emerald-400", "border-green-400", "font-bold");
       op.parentNode.is_saved = true;
+      document.getElementById("score").textContent = score;
       // console.log(score);
       // console.log(op.parentNode.is_saved);
     } else {
@@ -70,6 +76,7 @@ export function Quiz({ data }) {
       // console.log(score);
     }
   }
+
   return (
     <div className="quiz-container" id="quiz-container">
       <div className="topic-container">
@@ -91,6 +98,9 @@ export function Quiz({ data }) {
                   id={opt.id}
                   data-correct={opt.is_correct}
                   onClick={(e) => {
+                    if (opt.is_correct) {
+                      setScore((prev) => prev + 1);
+                    }
                     handleAnswer(
                       e.target,
                       opt.is_correct,
@@ -106,14 +116,14 @@ export function Quiz({ data }) {
         </div>
       </div>
       {isSubmit ? (
-        <h1>Total Score : {score.length * 4}</h1>
+        (questionsAnswered(true),
+        (<h1 id="total-score">Total Score : {score * 4}/40</h1>))
       ) : (
         <div className="control-buttons">
-          <p>
-            Score : <span>0</span>
-          </p>
+          <p>Score : {score}</p>
           <div className="nxt-btn-container">
             <button
+              id="nxt-btn"
               className="nxt-btn"
               onClick={() => {
                 if (qIndex < data.questions.length - 1) {
