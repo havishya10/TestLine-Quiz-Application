@@ -7,6 +7,7 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [Demo](#demo)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
@@ -21,6 +22,12 @@
 ## Overview
 
 This repository hosts a dynamic quiz application built with React. The app fetches quiz data from a JSON file, renders questions with multiple options, and features a countdown timer. It also offers a theme toggle (light/dark mode) for an enhanced user experience. 
+
+---
+
+## Demo
+
+You can view the live demo of the project here: [Test Line Quiz Demo](https://testlinequiz.netlify.app/)
 
 ---
 
